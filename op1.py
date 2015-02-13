@@ -19,9 +19,10 @@ def main():
     for i in lijst:
         lijst2.append(i[0])
 
-    for land in lijst2:
-        country=Country(land)
-        print(country)
+ 	countryDic = {}
+	for country in lijst2:
+		countryDic[country] = Country(country)
+	print (countryDic)
 
 if __name__== "__main__":
     main()
