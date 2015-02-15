@@ -36,7 +36,9 @@ class Interface(QtGui.QWidget):
 		lijst2=[]
 		for i in lijst:
 			lijst2.append(i[0])
-		print(lijst2)
+		self.countryDic = {}
+		for country in lijst2:
+			self.countryDic[country] = country
 		self.combo.addItems(lijst2)
 		self.combo.activated.connect(self.paintEvent)
 
@@ -53,8 +55,10 @@ class Interface(QtGui.QWidget):
 
 	def drawRectangles(self, qp):
 		#Choose random color and paint flag
-		qp.setBrush(QtGui.QColor(randrange(0,256,1),randrange(0,256,1), randrange(0,256,1)))
-		qp.drawRect(10, 80, 90, 60)
+		for country in self.countryDic:
+			qp.setBrush(QtGui.QColor(randrange(0,256,1),randrange(0,256,1), randrange(0,256,1)))
+			qp.drawRect(10, 80, 90, 60)
+			self.countryDic[country] = self.countryDic[country],qp
 
 if __name__ == '__main__':
     app=QtGui.QApplication(sys.argv)
