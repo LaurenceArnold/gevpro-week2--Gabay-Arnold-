@@ -1,4 +1,7 @@
 #!/opt/local/bin/python3.4
+#voor linux
+#!usr/bin/env python
+
 
 from PyQt4 import QtGui, QtCore
 
@@ -35,26 +38,33 @@ class Interface(QtGui.QWidget):
             lijst2.append(i[0])
         print(lijst2)
         self.combo.addItems(lijst2)
-        #self.combo.activated.connect(self.alterLCD)
+        self.combo.activated.connect(self.drawRectangles)
 
         self.setGeometry(200,200,300,300)
         self.setWindowTitle("Vlaggen")
         self.show()
 
-    #def alterLCD(self):
+    def drawRectangles(self,event):
         # bij het aangeklikte item wordt de bijhorende vlag random opgezocht
         #self.gekozen=self.combo.currentText()
 
-        #self.flag= QtGui.QFrame.QRect(30, 10, 100, 50)
-        #self.setStyleSheet("self.combo {color:red}");
+        qp = QtGui.QPainter()
+        qp.begin(self)
 
-        #self.flag.setStyleSheet("QFrame{ background-color: yellow }");
+        color = QtGui.QColor(0, 0, 0)
+        color.setNamedColor('#d4d4d4')
+        qp.setPen(color)
 
-        #setStyleSheet("self.flag { background-color: yellow }" % self.flag.name())
+        qp.setBrush(QtGui.QColor(200, 0, 0))
+        qp.drawRect(10, 15, 90, 60)
 
-        #Als je een QFrame-object gebruikt om de flag te tonen, kan je deze methode gebruiken om
-        # een bepaalde kleur te laten zien:
-       # setStyleSheet("QFrame { background-color: %s }" % flag_colour.name())
+        qp.setBrush(QtGui.QColor(255, 80, 0, 160))
+        qp.drawRect(130, 15, 90, 60)
+
+        qp.setBrush(QtGui.QColor(25, 0, 90, 200))
+        qp.drawRect(250, 15, 90, 60)
+
+        qp.end()
 
 if __name__ == '__main__':
     app=QtGui.QApplication(sys.argv)
