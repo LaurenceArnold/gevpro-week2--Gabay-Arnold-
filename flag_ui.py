@@ -3,6 +3,7 @@
 from PyQt4 import QtGui, QtCore
 
 from random import randrange
+from country import *
 
 import sys
 
@@ -30,31 +31,20 @@ class Interface(QtGui.QWidget):
 		for i in lijst:
 			lijst2.append(i[0])				
 		self.combo.addItems(lijst2)
-		#self.combo.activated.connect(self.paintEvent)
 		
 		self.countryDic={}
 		for country in lijst2:
-			self.countryDic[country]=country		
+			self.countryDic[country]=Country(country)		
 		
 		self.setGeometry(200,200,300,300)
 		self.setWindowTitle("Vlaggen bij een Land!")
+		self.frame = QtGui.QFrame(self)
+		self.frame.move(5,90)
+		self.frame.resize(120,80)
+		self.frame.setStyleSheet("QFrame {background-color: yellow} ")
 		self.show()		
 
-	def paintEvent(self, event):
-		#activates a pain-Event
-		qp = QtGui.QPainter()
-		qp.begin(self)
-		for country in self.countryDic:
-			qp.setBrush(QtGui.QColor(randrange(0,256,1),randrange(0,256,1), randrange(0,256,1)))
-			qp.drawRect(10, 80, 90, 60)
-			self.countryDic[country]=self.countryDic[country], qp
-		
-		qp.end()
 	
-	#def drawRectangles(self,event,qp):						
-		
-		#print(self.countryDic)
-		
 	
 if __name__ == '__main__':
     app=QtGui.QApplication(sys.argv)
