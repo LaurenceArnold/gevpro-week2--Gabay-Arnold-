@@ -3,7 +3,8 @@
 from PyQt4 import QtGui, QtCore
 
 from random import randrange
-from country import *
+from country2 import *
+from flag_color import *
 
 import sys
 
@@ -31,19 +32,24 @@ class Interface(QtGui.QWidget):
 		for i in lijst:
 			lijst2.append(i[0])				
 		self.combo.addItems(lijst2)
-		
-		self.countryDic={}
-		for country in lijst2:
-			self.countryDic[country]=Country(country)		
-		
+		#countryObjList = []
+		#for country in lijst2:
+			#countryObjList.append(Country(country,FlagColor())
+			
 		self.setGeometry(200,200,300,300)
 		self.setWindowTitle("Vlaggen bij een Land!")
 		self.frame = QtGui.QFrame(self)
 		self.frame.move(5,90)
 		self.frame.resize(120,80)
-		self.frame.setStyleSheet("QFrame {background-color: yellow} ")
-		self.show()		
-
+		self.show()
+		self.MakeFlag()
+		self.combo.activated.connect(self.MakeFlag)
+		
+	def MakeFlag(self):
+		choosenCountry = self.combo.currentText()
+		countryObj = Country(choosenCountry)
+		flag_color = countryObj.displayFlag()
+		self.frame.setStyleSheet("QFrame {background-color: %s}" %flag_color.name())
 	
 	
 if __name__ == '__main__':
