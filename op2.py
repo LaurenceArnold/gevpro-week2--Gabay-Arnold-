@@ -5,10 +5,6 @@ import sys
 from country import *
 
 def main():
-    #for land in open("countries_list.txt","r"):
-     #   country=Country(land)
-      #  print(country)
-
     lijst=[]
     with open('countries_list.txt') as in_f:
         for line in in_f:
