@@ -15,30 +15,29 @@ class Interface(QtGui.QWidget):
 		self.initUI()
 
 	def initUI(self):
-		#button 1
-		self.btn=QtGui.QLabel('Land',self)
-		self.btn.move(30,30)
+		self.label=QtGui.QLabel('Land',self)
+		self.label.move(30,30)
 		
 		self.combo = QtGui.QComboBox(self)
 		self.combo.move(5, 50)
 		self.combo.resize(120,30)
 		
-		lijst=[]
+		#add countries to QComboBox
+		countryList=[]
 		with open('countries_list.txt') as in_f:
 			for line in in_f:
 				x = line.split('\n')
-				lijst.append(x)
-		lijst2=[]
-		for i in lijst:
-			lijst2.append(i[0])				
-		self.combo.addItems(lijst2)
+				countryList.append(x[0])				
+		self.combo.addItems(countryList)
 			
 		self.setGeometry(200,200,300,300)
 		self.setWindowTitle("Vlaggen bij een Land!")
+		#construct QFrame which will used as flag-displayer
 		self.frame = QtGui.QFrame(self)
 		self.frame.move(5,90)
 		self.frame.resize(120,80)
 		self.show()
+		
 		self.countryDic = {}
 		self.MakeFlag()
 		self.combo.activated.connect(self.MakeFlag)

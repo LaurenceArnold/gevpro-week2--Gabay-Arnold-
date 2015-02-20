@@ -7,9 +7,9 @@ from random import randrange
 class FlagColor(QtGui.QColor):
     def __init__(self):
         super(FlagColor,self).__init__()
-        self.kleurvlag()
+        self.genColors()
 
-    def kleurvlag(self):
+    def genColors(self):
 		self.setRed(randrange(0,256))
 		self.setGreen(randrange(0,256))
 		self.setBlue(randrange(0,256))
