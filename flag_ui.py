@@ -39,10 +39,10 @@ class Interface(QtGui.QWidget):
 		self.show()
 		
 		self.countryDic = {}
-		self.MakeFlag()
-		self.combo.activated.connect(self.MakeFlag)
+		self.ShowFlag()	#So a flag will be displayed for the first country too
+		self.combo.activated.connect(self.ShowFlag)
 		
-	def MakeFlag(self):
+	def ShowFlag(self):
 		choosenCountry = self.combo.currentText()
 		self.countryDic.setdefault(choosenCountry,Country(choosenCountry))	#if selected country hasn't been choosen yet, make country-object
 		tempCountryObj = self.countryDic.get(choosenCountry)
