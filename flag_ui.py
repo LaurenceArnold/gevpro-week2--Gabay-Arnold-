@@ -39,13 +39,15 @@ class Interface(QtGui.QWidget):
 		self.frame.move(5,90)
 		self.frame.resize(120,80)
 		self.show()
+		self.countryDic = {}
 		self.MakeFlag()
 		self.combo.activated.connect(self.MakeFlag)
 		
 	def MakeFlag(self):
 		choosenCountry = self.combo.currentText()
-		countryObj = Country(choosenCountry)
-		flag_color = countryObj.displayFlag()
+		self.countryDic.setdefault(choosenCountry,Country(choosenCountry))	#if selected country hasn't been choosen yet, make country-object
+		tempCountryObj = self.countryDic.get(choosenCountry)
+		flag_color = tempCountryObj.displayFlag()
 		self.frame.setStyleSheet("QFrame {background-color: %s}" %flag_color.name())
 	
 	
