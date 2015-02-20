@@ -32,9 +32,6 @@ class Interface(QtGui.QWidget):
 		for i in lijst:
 			lijst2.append(i[0])				
 		self.combo.addItems(lijst2)
-		#countryObjList = []
-		#for country in lijst2:
-			#countryObjList.append(Country(country,FlagColor())
 			
 		self.setGeometry(200,200,300,300)
 		self.setWindowTitle("Vlaggen bij een Land!")

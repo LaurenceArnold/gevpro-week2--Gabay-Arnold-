@@ -5,7 +5,6 @@ import sys
 from country import *
 
 def main():
-<<<<<<< HEAD:op1.py
 	lijst=[]
 
 	with open('countries_list.txt') as in_f:
