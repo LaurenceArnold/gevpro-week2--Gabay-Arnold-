@@ -5,12 +5,19 @@ import sys
 from country import *
 
 def main():
+<<<<<<< HEAD:op1.py
 	lijst=[]
 
 	with open('countries_list.txt') as in_f:
 		for line in in_f:
 			x = line.split('\n')
 			lijst.append(x)
+
+    lijst=[]
+    with open('countries_list.txt') as in_f:
+        for line in in_f:
+            x = line.split('\n')
+            lijst.append(x)
 
 	lijst2=[]
 	for i in lijst:
