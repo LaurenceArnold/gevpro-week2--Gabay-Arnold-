@@ -2,13 +2,15 @@
 
 from flag_color import *
 
-
+"""This class creates a Country with a random generated flag"""
 class Country:
     def __init__(self,country):
+		"""Creates a Countryobject"""
         self.country=country
         self.flag=FlagColor()
 
     def getCountry(self):
+		"""returns name of the countryobject"""
         return self.country
 
     def displayFlag(self):
