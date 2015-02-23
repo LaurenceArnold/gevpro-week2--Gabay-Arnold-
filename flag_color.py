@@ -1,4 +1,4 @@
-#!/opt/local/bin/python3.4
+#!/usr/bin/env python
 
 from PyQt4 import QtGui
 
